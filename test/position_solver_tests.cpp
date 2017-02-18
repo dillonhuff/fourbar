@@ -25,12 +25,12 @@ namespace fourbar {
       vec2 d_position = square_links.solve_A_angle(theta_1);
       vec2 expected(2, 0);
 
-      cout << "Expected = " << expected << endl;
-      cout << "Actual   = " << d_position << endl;
+      // cout << "Expected = " << expected << endl;
+      // cout << "Actual   = " << d_position << endl;
 
       vec2 r = expected - d_position;
-      cout << "Diff     = " << r << endl;
-      cout << "Diff len = " << r.length() << endl;
+      // cout << "Diff     = " << r << endl;
+      // cout << "Diff len = " << r.length() << endl;
       
       REQUIRE(within_eps(d_position, expected, 0.0001));
 
@@ -44,12 +44,12 @@ namespace fourbar {
       vec2 d_position = square_links.solve_A_angle(theta_1);
       vec2 expected(1, 1);
 
-      cout << "Expected = " << expected << endl;
-      cout << "Actual   = " << d_position << endl;
+      // cout << "Expected = " << expected << endl;
+      // cout << "Actual   = " << d_position << endl;
 
       vec2 r = expected - d_position;
-      cout << "Diff     = " << r << endl;
-      cout << "Diff len = " << r.length() << endl;
+      // cout << "Diff     = " << r << endl;
+      // cout << "Diff len = " << r.length() << endl;
       
       REQUIRE(within_eps(d_position, expected, 0.0001));
 
@@ -62,9 +62,12 @@ namespace fourbar {
 
       vec2 d_position = square_links.solve_A_angle(theta_1);
 
-      double theta_2 = 0.0;
-      vec2 u = circle_point(a, ac_len, theta_1);
-      vec2 expected = circle_point(u, cd_len, theta_2);
+      double theta_4 = 45;
+      vec2 k = b - a;
+      vec2 expected = rotate_off_reference(b, k, bd_len, theta_4);
+      // double theta_2 = 0.0;
+      // vec2 u = circle_point(a, ac_len, theta_1);
+      // vec2 expected = circle_point(u, cd_len, theta_2);
 
       cout << "Expected = " << expected << endl;
       cout << "Actual   = " << d_position << endl;

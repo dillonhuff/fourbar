@@ -5,6 +5,14 @@
 
 namespace fourbar {
 
+  static inline double to_degrees(const double rads) {
+    return (rads*180) / M_PI;
+  }
+
+  static inline double to_radians(const double degs) {
+    return (degs*M_PI) / 180;
+  }
+  
   class vec2 {
   protected:
     double x_val, y_val;
@@ -24,6 +32,12 @@ namespace fourbar {
       double len = length();
       return vec2(x() / len, y() / len);
     }
+
+    inline vec2 rotated(const double angle_degrees) const {
+      double angle_rads = to_radians(angle_degrees);
+      return vec2(cos(angle_rads)*x() - sin(angle_rads)*y(),
+		  sin(angle_rads)*x() + cos(angle_rads)*y());
+    }
   };
 
   static inline vec2 operator*(const double s, const vec2 v) {
@@ -39,17 +53,6 @@ namespace fourbar {
     return within_eps(l.length(), r.length(), eps);
   }
 
-  static inline
-  vec2 circle_point(const vec2 center,
-		    const double radius,
-		    const double theta_degrees) {
-    double theta_rads = (theta_degrees * M_PI) / 180;
-    double x_comp = sin(theta_rads);
-    double y_comp = cos(theta_rads);
-
-    return vec2(center.x() + x_comp, center.y() + y_comp);
-  }
-
   static inline vec2 operator+(const vec2 l, const vec2 r) {
     return vec2(l.x() + r.x(), l.y() + r.y());
   }
@@ -58,10 +61,14 @@ namespace fourbar {
     return vec2(l.x() - r.x(), l.y() - r.y());
   }
 
-  std::ostream& operator<<(std::ostream& stream, const vec2& v);
-
-  static inline double to_degrees(const double rads) {
-    return (rads*180) / M_PI;
+  static inline
+  vec2 rotate_off_reference(const vec2 center,
+			    const vec2 reference,
+			    const double len,
+			    const double angle_degrees) {
+    return center + len*(reference.normalized().rotated(angle_degrees));
   }
+
+  std::ostream& operator<<(std::ostream& stream, const vec2& v);
 
 }

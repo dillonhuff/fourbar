@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cmath>
+#include <iostream>
 
 namespace fourbar {
 
@@ -28,5 +29,18 @@ namespace fourbar {
   static inline bool within_eps(const vec2 l, const vec2 r, const double eps) {
     return within_eps(l.length(), r.length(), eps);
   }
+
+  static inline
+  vec2 circle_point(const vec2 center,
+		    const double radius,
+		    const double theta_degrees) {
+    double theta_rads = (theta_degrees * M_PI) / 180;
+    double x_comp = cos(theta_rads);
+    double y_comp = sin(theta_rads);
+
+    return vec2(center.x() + x_comp, center.y() + y_comp);
+  }
+
+  std::ostream& operator<<(std::ostream& stream, const vec2& v);
 
 }

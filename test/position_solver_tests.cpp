@@ -5,6 +5,8 @@
 #include "quadrilateral.h"
 #include "vec2.h"
 
+using namespace std;
+
 namespace fourbar {
 
   TEST_CASE("Solve square linkage") {
@@ -13,19 +15,36 @@ namespace fourbar {
 
     double ac_len = 1.0;
     double bd_len = 1.0;
-    double ad_len = 1.0;
+    double cd_len = 1.0;
 
-    quadrilateral square_links(a, b, ac_len, bd_len, ad_len);
+    quadrilateral square_links(a, b, ac_len, bd_len, cd_len);
 
-    double theta_1 = 0.0;
+    SECTION("A angle is 0") {
+      double theta_1 = 0.0;
 
-    vec2 d_position = square_links.solve_a_angle(theta_1);
-    vec2 expected(1, 1);
+      vec2 d_position = square_links.solve_A_angle(theta_1);
+      vec2 expected(1, 1);
 
-    REQUIRE(within_eps(d_position, expected, 0.0001));
+      REQUIRE(within_eps(d_position, expected, 0.0001));
 
-    vec2 not_expected(1, 0);
-    REQUIRE(!within_eps(d_position, not_expected, 0.0001));
+      vec2 not_expected(1, 0);
+      REQUIRE(!within_eps(d_position, not_expected, 0.0001));
+    }
+
+    SECTION("A angle is 45 degrees") {
+      double theta_1 = 45.0;
+
+      vec2 d_position = square_links.solve_A_angle(theta_1);
+
+      double theta_2 = 0.0;
+      vec2 u = circle_point(a, ac_len, theta_1);
+      vec2 expected = circle_point(u, cd_len, theta_2);
+
+      cout << "Expected = " << expected << endl;
+      cout << "Actual   = " << d_position << endl;
+
+      REQUIRE(within_eps(d_position, expected, 0.0001));
+    }
   }
 
 }

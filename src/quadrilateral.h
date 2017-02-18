@@ -46,14 +46,17 @@ namespace fourbar {
 
       std::cout << "alpha_in_deg = " << alpha_in_deg << std::endl;
 
-      double psi = to_degrees(acos(psi_in_deg));
+
       if (psi_in_deg < 0.0) {
-	psi = -1*psi;
+	psi_in_deg = -1*psi_in_deg;
       }
-      double alpha = to_degrees(acos(alpha_in_deg));
+
       if (alpha_in_deg < 0.0) {
-	alpha = -1*alpha;
+	alpha_in_deg = -1*alpha_in_deg;
       }
+
+      double psi = to_degrees(acos(psi_in_deg));      
+      double alpha = to_degrees(acos(alpha_in_deg));
 
       std::cout << "psi = " << psi << std::endl;
       std::cout << "alpha = " << alpha << std::endl;

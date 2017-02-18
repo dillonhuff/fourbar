@@ -51,4 +51,8 @@ namespace fourbar {
 
   std::ostream& operator<<(std::ostream& stream, const vec2& v);
 
+  static inline double to_degrees(const double rads) {
+    return (rads*180) / M_PI;
+  }
+
 }

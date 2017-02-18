@@ -35,10 +35,18 @@ namespace fourbar {
 		    const double radius,
 		    const double theta_degrees) {
     double theta_rads = (theta_degrees * M_PI) / 180;
-    double x_comp = cos(theta_rads);
-    double y_comp = sin(theta_rads);
+    double x_comp = sin(theta_rads);
+    double y_comp = cos(theta_rads);
 
     return vec2(center.x() + x_comp, center.y() + y_comp);
+  }
+
+  static inline vec2 operator+(const vec2 l, const vec2 r) {
+    return vec2(l.x() + r.x(), l.y() + r.y());
+  }
+
+  static inline vec2 operator-(const vec2 l, const vec2 r) {
+    return vec2(l.x() - r.x(), l.y() - r.y());
   }
 
   std::ostream& operator<<(std::ostream& stream, const vec2& v);

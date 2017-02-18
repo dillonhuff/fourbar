@@ -19,7 +19,10 @@ namespace fourbar {
 
     vec2 solve_A_angle(const double a_angle) const {
       vec2 u = circle_point(a_pt, ac_len, a_angle);
-      return vec2(1, 1);
+
+      std::cout << "u = " << u << std::endl;
+      vec2 k = b_pt - a_pt;
+      return u + k;
     }
   };
 

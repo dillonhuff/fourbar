@@ -25,6 +25,13 @@ namespace fourbar {
       vec2 d_position = square_links.solve_A_angle(theta_1);
       vec2 expected(1, 1);
 
+      cout << "Expected = " << expected << endl;
+      cout << "Actual   = " << d_position << endl;
+
+      vec2 r = expected - d_position;
+      cout << "Diff     = " << r << endl;
+      cout << "Diff len = " << r.length() << endl;
+      
       REQUIRE(within_eps(d_position, expected, 0.0001));
 
       vec2 not_expected(1, 0);
@@ -42,6 +49,10 @@ namespace fourbar {
 
       cout << "Expected = " << expected << endl;
       cout << "Actual   = " << d_position << endl;
+
+      vec2 r = expected - d_position;
+      cout << "Diff     = " << r << endl;
+      cout << "Diff len = " << r.length() << endl;
 
       REQUIRE(within_eps(d_position, expected, 0.0001));
     }

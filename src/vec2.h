@@ -19,7 +19,16 @@ namespace fourbar {
     inline double length() const {
       return sqrt(x()*x() + y()*y());
     }
+
+    inline vec2 normalized() const {
+      double len = length();
+      return vec2(x() / len, y() / len);
+    }
   };
+
+  static inline vec2 operator*(const double s, const vec2 v) {
+    return vec2(s*v.x(), s*v.y());
+  }
 
   static inline bool within_eps(const double x, const double y, const double eps) {
     double diff = fabs(x - y);

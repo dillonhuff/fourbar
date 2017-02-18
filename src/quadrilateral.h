@@ -18,6 +18,7 @@ namespace fourbar {
       : a_pt(p_a), b_pt(p_b), ac_len(p_ac_len), bd_len(p_bd_len), cd_len(p_cd_len) {}
 
     vec2 solve_A_angle(const double a_angle) const {
+      vec2 u = circle_point(a_pt, ac_len, a_angle);
       return vec2(1, 1);
     }
   };

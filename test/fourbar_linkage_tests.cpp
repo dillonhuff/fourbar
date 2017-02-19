@@ -27,9 +27,6 @@ namespace fourbar {
       vec2 link_pos = link.solve_A_angle(theta_2);
       vec2 expected(2.5, 1.0);
 
-      cout << "Actual link pos = " << link_pos << endl;
-      cout << "Expected pos    = " << expected << endl;
-      
       REQUIRE( within_eps( link_pos, expected, 0.0001 ) );
     }
 
@@ -42,9 +39,6 @@ namespace fourbar {
       double theta_2 = 90.0;
       vec2 link_pos = link.solve_A_angle(theta_2);
       vec2 expected(1.5, 1.0);
-
-      cout << "Actual link pos = " << link_pos << endl;
-      cout << "Expected pos    = " << expected << endl;
 
       REQUIRE( within_eps( link_pos, expected, 0.0001 ) );
     }

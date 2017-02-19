@@ -39,20 +39,26 @@ namespace fourbar {
 
       double psi_in_deg = (r3*r3 - r7sq - r4*r4) / (2*r7*r4);
 
-      std::cout << "psi_in_deg = " << psi_in_deg << std::endl;
-      
       double alpha_in_deg =
 	(r7sq + r1*r1 - r2*r2) / (2*r1*r7);
 
+      std::cout << "psi_in_deg = " << psi_in_deg << std::endl;
       std::cout << "alpha_in_deg = " << alpha_in_deg << std::endl;
 
+      if (within_eps(theta_2, 90.0, 90.0)) {
+	std::cout << "SWAPPING value signs" << std::endl;
+      //      if (psi_in_deg < 0.0) {
+	//psi_in_deg = -1*psi_in_deg;
+      // }
 
-      if (psi_in_deg < 0.0) {
-	psi_in_deg = -1*psi_in_deg;
-      }
+      // if (alpha_in_deg < 0.0) {
+	//alpha_in_deg = -1*alpha_in_deg;
 
-      if (alpha_in_deg < 0.0) {
-	alpha_in_deg = -1*alpha_in_deg;
+	alpha_in_deg = fabs(alpha_in_deg);
+	psi_in_deg = fabs(psi_in_deg);
+      } else {
+	alpha_in_deg = -1*fabs(alpha_in_deg);
+	psi_in_deg = -1*fabs(psi_in_deg);
       }
 
       double psi = to_degrees(acos(psi_in_deg));      

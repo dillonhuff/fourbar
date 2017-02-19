@@ -10,4 +10,13 @@ namespace fourbar {
 
     REQUIRE(!within_eps(a, b, 0.0001));
   }
+
+  TEST_CASE("45 is within 90 degrees of 90") {
+    REQUIRE(within_eps(45.0, 90.0, 90.0));
+  }
+
+  TEST_CASE("45 is not within 90 degrees of 90") {
+    REQUIRE(!within_eps(225.0, 90.0, 90.0));
+  }
+
 }

@@ -79,6 +79,16 @@ namespace fourbar {
       return e;
     }
 
+    vec2 c_pos(const double theta_2) const {
+      vec2 k = b_pt - a_pt;
+      vec2 val = rotate_off_reference(a_pt,
+				      k,
+				      ac_len,
+				      theta_2);
+
+      return val;
+    }
+
     std::vector<vec2> crank_sample(const double inc) const;
   };
 

@@ -92,12 +92,12 @@ namespace fourbar {
       // vec2 u = circle_point(a, ac_len, theta_1);
       // vec2 expected = circle_point(u, cd_len, theta_2);
 
-      cout << "Expected = " << expected << endl;
-      cout << "Actual   = " << d_position << endl;
+      // cout << "Expected = " << expected << endl;
+      // cout << "Actual   = " << d_position << endl;
 
       vec2 r = expected - d_position;
-      cout << "Diff     = " << r << endl;
-      cout << "Diff len = " << r.length() << endl;
+      // cout << "Diff     = " << r << endl;
+      // cout << "Diff len = " << r.length() << endl;
 
       REQUIRE(within_eps(d_position, expected, 0.0001));
     }

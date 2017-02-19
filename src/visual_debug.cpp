@@ -37,8 +37,9 @@ namespace fourbar {
  
     // Add the geometry and topology to the polydata
     pd->SetPoints(points);
-    pd->SetPolys(vertexes);
+    pd->SetVerts(vertexes);
 
+    cout << "# of cells = " << pd->GetNumberOfPolys() << endl;
     return pd;
   }
 
@@ -84,6 +85,7 @@ namespace fourbar {
     std::vector<vtkSmartPointer<vtkActor> > actors;
 
     for (auto& pd : pds) {
+      cout << "# of polys in pd = " << pd->GetNumberOfPolys() << endl;
       auto pda = polydata_actor(pd);
       pda->GetProperty()->SetPointSize(10);
       actors.push_back(pda);

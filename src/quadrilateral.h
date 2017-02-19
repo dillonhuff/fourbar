@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "vec2.h"
 
 namespace fourbar {
@@ -76,6 +78,8 @@ namespace fourbar {
 
       return e;
     }
+
+    std::vector<vec2> crank_sample(const double inc) const;
   };
 
 }

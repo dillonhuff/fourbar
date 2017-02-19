@@ -4,6 +4,7 @@
 
 #include "quadrilateral.h"
 #include "vec2.h"
+#include "visual_debug.h"
 
 using namespace std;
 
@@ -101,6 +102,10 @@ namespace fourbar {
       REQUIRE(within_eps(d_position, expected, 0.0001));
     }
 
+    SECTION("Visualize") {
+      visualize_points(square_links);
+    }
+    
   }
 
 }

@@ -69,6 +69,11 @@ namespace fourbar {
     return center + len*(reference.normalized().rotated(angle_degrees));
   }
 
+  static inline
+  double euclidean_distance(const vec2 l, const vec2 r) {
+    return (l - r).length();
+  }
+
   std::ostream& operator<<(std::ostream& stream, const vec2& v);
 
 }

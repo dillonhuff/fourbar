@@ -64,7 +64,7 @@ namespace fourbar {
 
     renderer->AddActor(axes);
     for (auto actor : actors) {
-      actor->GetProperty()->SetPointSize(10);
+      actor->GetProperty()->SetPointSize(5);
       renderer->AddActor(actor);
     }
     renderer->SetBackground(0.5, 0.5, 0.5);
@@ -87,7 +87,6 @@ namespace fourbar {
     for (auto& pd : pds) {
       cout << "# of polys in pd = " << pd->GetNumberOfPolys() << endl;
       auto pda = polydata_actor(pd);
-      pda->GetProperty()->SetPointSize(10);
       actors.push_back(pda);
     }
 
@@ -99,7 +98,7 @@ namespace fourbar {
   }
 
   void visualize_points(const quadrilateral& q) {
-    vector<vec2> points = q.crank_sample(0.1);
+    vector<vec2> points = q.crank_sample(0.5);
     polydata pd = polydata_for_points(points);
 
     visualize_polydatas({pd});

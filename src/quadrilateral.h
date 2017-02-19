@@ -29,7 +29,7 @@ namespace fourbar {
       double theta_rads = (theta_2*M_PI) / 180.0;
       double cos_theta = cos(theta_rads);
 
-      std::cout << "cos theta_2 = " << cos_theta << std::endl;
+      //std::cout << "cos theta_2 = " << cos_theta << std::endl;
 
       double r7sq = r1*r1 + r2*r2 - 2*r1*r2*cos_theta;
 
@@ -44,8 +44,8 @@ namespace fourbar {
       double alpha_in_deg =
 	(r7sq + r1*r1 - r2*r2) / (2*r1*r7);
 
-      std::cout << "psi_in_deg = " << psi_in_deg << std::endl;
-      std::cout << "alpha_in_deg = " << alpha_in_deg << std::endl;
+      //std::cout << "psi_in_deg = " << psi_in_deg << std::endl;
+      //std::cout << "alpha_in_deg = " << alpha_in_deg << std::endl;
 
       if (within_eps(theta_2, 90.0, 90.0)) {
 	alpha_in_deg = fabs(alpha_in_deg);
@@ -58,8 +58,8 @@ namespace fourbar {
       double psi = to_degrees(acos(psi_in_deg));      
       double alpha = to_degrees(acos(alpha_in_deg));
 
-      std::cout << "psi = " << psi << std::endl;
-      std::cout << "alpha = " << alpha << std::endl;
+      //std::cout << "psi = " << psi << std::endl;
+      //std::cout << "alpha = " << alpha << std::endl;
       return 180 - alpha - psi;
     }
 
@@ -72,7 +72,7 @@ namespace fourbar {
 
       double theta_4 = solve_theta_4(theta_2);
 
-      std::cout << "theta 4 = " << theta_4 << std::endl;
+      //std::cout << "theta 4 = " << theta_4 << std::endl;
 
       vec2 e = rotate_off_reference(b_pt, k, bd_len, theta_4);
 

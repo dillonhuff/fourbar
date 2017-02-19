@@ -25,9 +25,6 @@ SET(TEST_FILES ./test/vec2_tests.cpp
 add_executable(all-tests ${TEST_FILES})
 target_link_libraries(all-tests fourbar)
 
-add_executable(vertex-test test/vertex_example.cpp)
-target_link_libraries(vertex-test fourbar)
-
 ######### VTK Example ##########
 
 # Make command:
@@ -35,8 +32,6 @@ target_link_libraries(vertex-test fourbar)
 
 if(VTK_LIBRARIES)
   target_link_libraries(fourbar ${VTK_LIBRARIES})
-  target_link_libraries(vertex-test ${VTK_LIBRARIES})
 else()
   target_link_libraries(fourbar vtkHybrid vtkWidgets)
-  target_link_libraries(vertex-test vtkHybrid vtkWidgets)
 endif()

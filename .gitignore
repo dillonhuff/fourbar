@@ -5,3 +5,4 @@ Makefile
 all-tests
 cmake_install.cmake
 libfourbar.a
+vertex-test

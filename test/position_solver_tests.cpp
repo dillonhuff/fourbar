@@ -102,10 +102,6 @@ namespace fourbar {
       REQUIRE(within_eps(d_position, expected, 0.0001));
     }
 
-    SECTION("Visualize") {
-      visualize_points(square_links);
-    }
-    
   }
 
 }

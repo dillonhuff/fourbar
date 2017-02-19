@@ -40,6 +40,14 @@ namespace fourbar {
     }
   };
 
+  static inline vec2 operator+(const vec2 l, const vec2 r) {
+    return vec2(l.x() + r.x(), l.y() + r.y());
+  }
+
+  static inline vec2 operator-(const vec2 l, const vec2 r) {
+    return vec2(l.x() - r.x(), l.y() - r.y());
+  }
+
   static inline vec2 operator*(const double s, const vec2 v) {
     return vec2(s*v.x(), s*v.y());
   }
@@ -50,15 +58,7 @@ namespace fourbar {
   }
 
   static inline bool within_eps(const vec2 l, const vec2 r, const double eps) {
-    return within_eps(l.length(), r.length(), eps);
-  }
-
-  static inline vec2 operator+(const vec2 l, const vec2 r) {
-    return vec2(l.x() + r.x(), l.y() + r.y());
-  }
-
-  static inline vec2 operator-(const vec2 l, const vec2 r) {
-    return vec2(l.x() - r.x(), l.y() - r.y());
+    return within_eps((l - r).length(), 0.0, eps);
   }
 
   static inline

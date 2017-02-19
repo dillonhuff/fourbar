@@ -74,8 +74,7 @@ namespace fourbar {
 
       std::cout << "theta 4 = " << theta_4 << std::endl;
 
-      // Note: need to solve
-      vec2 e = rotate_off_reference(b_pt, k, bd_len, theta_4); //circle_point(k, bd_len, theta_4);
+      vec2 e = rotate_off_reference(b_pt, k, bd_len, theta_4);
 
       return e;
     }

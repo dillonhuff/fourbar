@@ -18,7 +18,8 @@ SET(FOURBAR_CPPS ./src/vec2.cpp
 
 add_library(fourbar ${FOURBAR_CPPS})
 
-SET(TEST_FILES ./test/position_solver_tests.cpp)
+SET(TEST_FILES ./test/vec2_tests.cpp
+	       ./test/position_solver_tests.cpp)
 
 add_executable(all-tests ${TEST_FILES})
 target_link_libraries(all-tests fourbar)

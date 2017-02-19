@@ -14,7 +14,8 @@ SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${EXTRA_CXX_COMPILE_FLAGS}")
 INCLUDE_DIRECTORIES(./src/)
 
 SET(FOURBAR_CPPS ./src/vec2.cpp
-		 ./src/quadrilateral.cpp)
+		 ./src/quadrilateral.cpp
+		 ./src/visual_debug.cpp)
 
 add_library(fourbar ${FOURBAR_CPPS})
 
@@ -30,7 +31,7 @@ target_link_libraries(all-tests fourbar)
 # /opt/local/bin/cmake -DVTK_DIR:PATH=/Users/dillon/Downloads/VTK-build/ -DCMAKE_BUILD_TYPE=Debug . 
 
 if(VTK_LIBRARIES)
-#  target_link_libraries(AddCell ${VTK_LIBRARIES})
+  target_link_libraries(fourbar ${VTK_LIBRARIES})
 else()
-#  target_link_libraries(AddCell vtkHybrid vtkWidgets)
+  target_link_libraries(fourbar vtkHybrid vtkWidgets)
 endif()

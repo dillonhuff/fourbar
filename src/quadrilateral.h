@@ -46,14 +46,6 @@ namespace fourbar {
       std::cout << "alpha_in_deg = " << alpha_in_deg << std::endl;
 
       if (within_eps(theta_2, 90.0, 90.0)) {
-	std::cout << "SWAPPING value signs" << std::endl;
-      //      if (psi_in_deg < 0.0) {
-	//psi_in_deg = -1*psi_in_deg;
-      // }
-
-      // if (alpha_in_deg < 0.0) {
-	//alpha_in_deg = -1*alpha_in_deg;
-
 	alpha_in_deg = fabs(alpha_in_deg);
 	psi_in_deg = fabs(psi_in_deg);
       } else {

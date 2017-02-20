@@ -54,24 +54,58 @@ namespace fourbar {
     return initial_links;
   }
 
+  struct fitness_range {
+    const std::vector<fourbar_linkage>& links;
+    std::vector<double> cumulative_fitnesses;
+  };
+
+  fitness_range
+  evaluate_fitness(const std::vector<fourbar_linkage>& links,
+		   const std::vector<vec2>& target_curve) {
+    vector<double> cum_fitness;
+    double cf = 0.0;
+    for (auto& l : links) {
+      double dist = 1.0 / hausdorff_distance( target_curve, l.crank_sample(1) );
+      double fitness = dist + cf;
+      cf += dist;
+      cum_fitness.push_back(fitness);
+    }
+
+    // NOTE: Should really assert monotonicity
+    return fitness_range{links, cum_fitness};
+  }
+
   fourbar_linkage
-  sample_by_fitness(const std::vector<fourbar_linkage>& links,
-		    const std::vector<vec2>& target_curve) {
+  sample_by_fitness(const fitness_range& fit_range) {
+    double min = 0.0;
+    double max = fit_range.cumulative_fitnesses.back();
+    double d = random_double(min, max);
+
+    for (int i = 0; i < fit_range.cumulative_fitnesses.size(); i++) {
+      if (d <= fit_range.cumulative_fitnesses[i]) {
+	return fit_range.links[i];
+      }
+    }
+
+    cout << "Max = " << max << endl;
+    cout << "d   = " << d << endl;
     assert(false);
   }
 
   fourbar_linkage crossover(const fourbar_linkage& l,
 			    const fourbar_linkage& r) {
-    assert(false);
+    return l;
   }
 
   std::vector<fourbar_linkage>
   evaluate_and_recombine(const std::vector<fourbar_linkage>& links,
 			 const std::vector<vec2>& target_curve) {
+    fitness_range fit_ranges = evaluate_fitness(links, target_curve);
+
     vector<fourbar_linkage> next_generation;
     for (int i = 0; i < links.size(); i++) {
-      fourbar_linkage l1 = sample_by_fitness(links, target_curve);
-      fourbar_linkage l2 = sample_by_fitness(links, target_curve);
+      fourbar_linkage l1 = sample_by_fitness(fit_ranges);
+      fourbar_linkage l2 = sample_by_fitness(fit_ranges);
       next_generation.push_back(crossover(l1, l2));
     }
 

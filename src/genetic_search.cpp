@@ -278,7 +278,7 @@ namespace fourbar {
     vector<fourbar_linkage> links =
       random_linkages(100);
 
-    int max_generations = 10;
+    int max_generations = 160;
     int num_generations = 0;
     
     while (num_generations < max_generations) {

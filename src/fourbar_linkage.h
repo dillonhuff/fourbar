@@ -26,6 +26,11 @@ namespace fourbar {
 
     std::vector<vec2> crank_sample(const double inc) const;
 
+    quadrilateral quad() const { return q; }
+
+    double bar_length() const { return len; }
+    double bar_angle() const { return angle; }
+
   };
 
 }

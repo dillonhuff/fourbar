@@ -79,6 +79,13 @@ namespace fourbar {
       return e;
     }
 
+    vec2 a_pos() const { return a_pt; }
+    vec2 b_pos() const { return a_pt; }
+
+    double ac_length() const { return ac_len; }
+    double bd_length() const { return bd_len; }
+    double cd_length() const { return cd_len; }
+
     vec2 c_pos(const double theta_2) const {
       vec2 k = b_pt - a_pt;
       vec2 val = rotate_off_reference(a_pt,

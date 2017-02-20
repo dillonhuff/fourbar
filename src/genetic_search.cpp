@@ -2,6 +2,9 @@
 
 #include <cassert>
 
+#include "algorithm.h"
+#include "hausdorff_distance.h"
+
 using namespace std;
 
 namespace fourbar {
@@ -57,7 +60,12 @@ namespace fourbar {
     vector<fourbar_linkage> initial_links =
       random_linkages(100);
 
-    return initial_links.front();
+    fourbar_linkage min =
+      min_e(initial_links, [target_curve](const fourbar_linkage& l) {
+	  return hausdorff_distance( target_curve, l.crank_sample(1) );
+	});
+
+    return min;
   }
 
 }

@@ -17,14 +17,16 @@ SET(FOURBAR_CPPS ./src/vec2.cpp
 		 ./src/quadrilateral.cpp
 		 ./src/visual_debug.cpp
 		 ./src/hausdorff_distance.cpp
-		 ./src/fourbar_linkage.cpp)
+		 ./src/fourbar_linkage.cpp
+		 ./src/genetic_search.cpp)
 
 add_library(fourbar ${FOURBAR_CPPS})
 
 SET(TEST_FILES ./test/vec2_tests.cpp
 	       ./test/position_solver_tests.cpp
 	       ./test/hausdorff_tests.cpp
-	       ./test/fourbar_linkage_tests.cpp)
+	       ./test/fourbar_linkage_tests.cpp
+	       ./test/evolver_tests.cpp)
 
 add_executable(all-tests ${TEST_FILES})
 target_link_libraries(all-tests fourbar)

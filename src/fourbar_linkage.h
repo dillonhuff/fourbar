@@ -24,6 +24,8 @@ namespace fourbar {
       return rotate_off_reference(c_pos, k, len, angle);
     }
 
+    std::vector<vec2> crank_sample(const double inc) const;
+
   };
 
 }

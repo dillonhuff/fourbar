@@ -54,14 +54,46 @@ namespace fourbar {
     return initial_links;
   }
 
+  fourbar_linkage
+  sample_by_fitness(const std::vector<fourbar_linkage>& links,
+		    const std::vector<vec2>& target_curve) {
+    assert(false);
+  }
+
+  fourbar_linkage crossover(const fourbar_linkage& l,
+			    const fourbar_linkage& r) {
+    assert(false);
+  }
+
+  std::vector<fourbar_linkage>
+  evaluate_and_recombine(const std::vector<fourbar_linkage>& links,
+			 const std::vector<vec2>& target_curve) {
+    vector<fourbar_linkage> next_generation;
+    for (int i = 0; i < links.size(); i++) {
+      fourbar_linkage l1 = sample_by_fitness(links, target_curve);
+      fourbar_linkage l2 = sample_by_fitness(links, target_curve);
+      next_generation.push_back(crossover(l1, l2));
+    }
+
+    return next_generation;
+  }
+
   fourbar_linkage evolve_mechanism(const std::vector<vec2>& target_curve) {
     srand(100);
 
-    vector<fourbar_linkage> initial_links =
+    vector<fourbar_linkage> links =
       random_linkages(100);
 
+    int max_generations = 10;
+    int num_generations = 0;
+    
+    while (num_generations < max_generations) {
+      links = evaluate_and_recombine(links, target_curve);
+      num_generations++;
+    }
+    
     fourbar_linkage min =
-      min_e(initial_links, [target_curve](const fourbar_linkage& l) {
+      min_e(links, [target_curve](const fourbar_linkage& l) {
 	  return hausdorff_distance( target_curve, l.crank_sample(1) );
 	});
 

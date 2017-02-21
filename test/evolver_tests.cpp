@@ -2,6 +2,7 @@
 
 #include "genetic_search.h"
 #include "hausdorff_distance.h"
+#include "visual_debug.h"
 
 using namespace std;
 
@@ -12,6 +13,11 @@ namespace fourbar {
 
     fourbar_linkage mech = evolve_mechanism(circle_points);
     vector<vec2> mech_points = mech.crank_sample(1);
+
+    auto circle_pd = polydata_for_points(circle_points);
+    auto mech_pd = polydata_for_points(mech_points);
+
+    visualize_polydatas({circle_pd, mech_pd});
 
     REQUIRE( hausdorff_distance( mech_points, circle_points ) < 0.1 );
   }

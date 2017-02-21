@@ -10,4 +10,9 @@ namespace fourbar {
   typedef vtkSmartPointer<vtkPolyData> polydata;
 
   void visualize_points(const quadrilateral& q);
+
+  void visualize_polydatas(const std::vector<polydata>& pds);
+
+  polydata polydata_for_points(const std::vector<vec2>& pts);
+
 }

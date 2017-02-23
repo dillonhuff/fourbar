@@ -25,6 +25,12 @@ namespace fourbar {
     REQUIRE(q.bd_length() == BD);
     REQUIRE(q.cd_length() == CD);
     REQUIRE(q.ab_length() == (A - B).length());
+
+    cout << "TEST QUAD" << endl;
+    cout << q << endl;
+
+    // auto pts = q.crank_sample(1);
+    // cout << "At 180 = " << pts[180] << endl;
   }
 
   TEST_CASE("Quadrilateral at 180 degrees") {

@@ -13,7 +13,7 @@ namespace fourbar {
 
       cout << "theta = " << theta << endl;
       
-      vec2 a = solve_A_angle(theta);
+      vec2 a = this->solve_A_angle(theta);
 
       if (isnan(a.x()) || isnan(a.y())) {
 	cout << "a     = " << a << endl;

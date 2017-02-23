@@ -35,6 +35,8 @@ namespace fourbar {
       return q.is_greshof();
     }
 
+    inline bool ac_crank() const { return q.ac_crank(); }
+
   };
 
   static inline bool is_greshof(const fourbar_linkage& l) {

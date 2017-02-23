@@ -111,6 +111,10 @@ namespace fourbar {
       return min + max <= p + q;
     }
 
+    inline bool ac_crank() const {
+      return is_greshof() && (ac_length() <= bd_length());
+    }
+
     std::vector<vec2> crank_sample(const double inc) const;
   };
 

@@ -55,7 +55,7 @@ namespace fourbar {
     vector<fourbar_linkage> initial_links;
     for (int i = 0; i < num; i++) {
       fourbar_linkage l = random_linkage();
-      while (!l.is_greshof()) {
+      while (!l.ac_crank()) {
 	l = random_linkage();
       }
       initial_links.push_back(l);
@@ -252,7 +252,6 @@ namespace fourbar {
   std::vector<fourbar_linkage>
   evaluate_and_recombine(const std::vector<fourbar_linkage>& links,
 			 const std::vector<vec2>& target_curve) {
-    //fitness_range fit_ranges = evaluate_fitness(links, target_curve);
 
     vector<fourbar_linkage> next_generation;
     for (int i = 0; i < links.size(); i++) {
@@ -268,9 +267,6 @@ namespace fourbar {
 	next_generation.push_back(current);
       }
 
-      // fourbar_linkage l1 = sample_by_fitness(fit_ranges);
-      // fourbar_linkage l2 = sample_by_fitness(fit_ranges);
-      // next_generation.push_back(crossover(l1, l2));
     }
 
     return next_generation;

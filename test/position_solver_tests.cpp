@@ -33,8 +33,10 @@ namespace fourbar {
     fourbar_linkage linkage(q, len, angle);
 
     vec2 pos = linkage.solve_A_angle(theta);
+    vec2 pos179 = linkage.solve_A_angle(179);
 
     cout << "pos at 180 degrees = " << pos << endl;
+    cout << "pos at 179 degrees = " << pos179 << endl;
 
     REQUIRE(!isnan(pos.x()));
     REQUIRE(!isnan(pos.y()));

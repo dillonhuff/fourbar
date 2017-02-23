@@ -80,7 +80,7 @@ namespace fourbar {
     }
 
     vec2 a_pos() const { return a_pt; }
-    vec2 b_pos() const { return a_pt; }
+    vec2 b_pos() const { return b_pt; }
 
     double ac_length() const { return ac_len; }
     double bd_length() const { return bd_len; }
@@ -111,11 +111,35 @@ namespace fourbar {
       return min + max <= p + q;
     }
 
+    inline bool is_degenerate() const { return !non_degenerate(); }
+
+    inline bool non_degenerate() const {
+      if (within_eps(a_pos(), b_pos(), 1e-6)) {
+	return false;
+      }
+
+      if (within_eps(bd_length(), 0.0, 1e-6)) {
+	return false;
+      }
+
+      if (within_eps(ac_length(), 0.0, 1e-6)) {
+	return false;
+      }
+
+      if (within_eps(cd_length(), 0.0, 1e-6)) {
+	return false;
+      }
+
+      return true;
+    }
+
     inline bool ac_crank() const {
-      return is_greshof() && (ac_length() <= bd_length());
+      return non_degenerate() && is_greshof() && (ac_length() <= bd_length());
     }
 
     std::vector<vec2> crank_sample(const double inc) const;
   };
+
+  std::ostream& operator<<(std::ostream& stream, const quadrilateral& q);
 
 }

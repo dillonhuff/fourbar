@@ -14,4 +14,12 @@ namespace fourbar {
     return pts;
   }
 
+  std::ostream& operator<<(std::ostream& stream, const quadrilateral& q) {
+    stream << "A = " << q.a_pos() << std::endl;
+    stream << "B = " << q.b_pos() << std::endl;
+    stream << "AC = " << q.ac_length() << std::endl;
+    stream << "BD = " << q.bd_length() << std::endl;
+    return stream;
+  }
+
 }

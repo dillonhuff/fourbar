@@ -29,7 +29,7 @@ namespace fourbar {
 
   quadrilateral random_quadrilateral() {
     vec2 a = random_vec2(-100, 100, -100, 100);
-    vec2 b_inc = random_vec2(0, 100, -100, 100);
+    vec2 b_inc = random_vec2(1, 100, 1, 100);
     vec2 b = a + b_inc;
 
     vec2 c = random_vec2(-100, 100, -100, 100);
@@ -39,7 +39,18 @@ namespace fourbar {
     double ac_len = (a - c).length();
     double bd_len = (b - d).length();
 
-    return quadrilateral(a, b, ac_len, bd_len, cd_len);
+    quadrilateral q(a, b, ac_len, bd_len, cd_len);
+
+    if (q.is_degenerate()) {
+      cout << "Degenerate!" << endl;
+      cout << "b inc = " << b_inc << endl;
+      cout << "a = " << a << endl;
+      cout << "b = " << b << endl;
+      cout << q << endl;
+      assert(false);
+    }
+
+    return q;
   }
 
   // TODO: Set initial parameters based on input curve size

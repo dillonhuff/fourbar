@@ -10,12 +10,18 @@ namespace fourbar {
     vector<vec2> pts;
     double theta = 0.0;
     while (theta < 360.0) {
-      cout << "theta = " << theta << endl;
 
       vec2 a = solve_A_angle(theta);
 
-      assert(!isnan(a.x()));
-      assert(!isnan(a.y()));
+      if (isnan(a.x()) || isnan(a.y())) {
+	cout << "theta = " << theta << endl;
+
+	cout << "Quadrilateral" << endl;
+	cout << q << endl;
+	
+	assert(!isnan(a.x()));
+	assert(!isnan(a.y()));
+      }
 
       pts.push_back( a );
       theta += inc;

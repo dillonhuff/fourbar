@@ -278,6 +278,10 @@ namespace fourbar {
     vector<fourbar_linkage> links =
       random_linkages(100);
 
+    for (auto& l : links) {
+      assert(is_greshof(l));
+    }
+
     int max_generations = 0;
     int num_generations = 0;
     

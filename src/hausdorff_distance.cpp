@@ -20,7 +20,7 @@ namespace fourbar {
 	double d = euclidean_distance(pt_1, pt_2);
 
 	if (d > 1e25) {
-	  cout <<  "distance between " << pt_1 << " and " << pt_2 << " is " << d << endl;
+	  //cout <<  "distance between " << pt_1 << " and " << pt_2 << " is " << d << endl;
 	}
 
 	if (d <= min_dist) {
@@ -28,7 +28,7 @@ namespace fourbar {
 	  min_set = true;
 	  //	  cout << "min dist set to = " << d << endl;
 	} else {
-	  cout <<  "Min dist not set: distance between " << pt_1 << " and " << pt_2 << " is " << d << endl;
+	  //cout <<  "Min dist not set: distance between " << pt_1 << " and " << pt_2 << " is " << d << endl;
 	}
       }
 

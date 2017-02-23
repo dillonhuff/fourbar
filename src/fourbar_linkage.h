@@ -31,6 +31,14 @@ namespace fourbar {
     double bar_length() const { return len; }
     double bar_angle() const { return angle; }
 
+    inline bool is_greshof() const {
+      return q.is_greshof();
+    }
+
   };
+
+  static inline bool is_greshof(const fourbar_linkage& l) {
+    return l.is_greshof();
+  }
 
 }

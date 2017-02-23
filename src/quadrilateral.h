@@ -85,6 +85,7 @@ namespace fourbar {
     double ac_length() const { return ac_len; }
     double bd_length() const { return bd_len; }
     double cd_length() const { return cd_len; }
+    double ab_length() const { return (b_pt - a_pt).length(); }
 
     vec2 c_pos(const double theta_2) const {
       vec2 k = b_pt - a_pt;
@@ -94,6 +95,20 @@ namespace fourbar {
 				      theta_2);
 
       return val;
+    }
+
+    inline bool is_greshof() const {
+      std::vector<double> lens{ac_length(),
+	  bd_length(),
+	  cd_length(),
+	  ab_length()};
+
+      sort(begin(lens), end(lens));
+      double min = lens[0];
+      double max = lens[3];
+      double p = lens[1];
+      double q = lens[2];
+      return min + max <= p + q;
     }
 
     std::vector<vec2> crank_sample(const double inc) const;

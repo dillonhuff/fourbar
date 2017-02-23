@@ -20,6 +20,24 @@ namespace fourbar {
 
     quadrilateral square_links(a, b, ac_len, bd_len, cd_len);
 
+    SECTION("Mechanism is greshof") {
+      REQUIRE(square_links.is_greshof());
+    }
+
+    SECTION("Mechanism is not greshof") {
+      vec2 a(0, 0);
+      vec2 b(3, 0);
+
+      double ac_len = 2.3;
+      double bd_len = 1.5;
+      double cd_len = 1.0;
+
+      quadrilateral non_greshof(a, b, ac_len, bd_len, cd_len);
+
+      REQUIRE(!non_greshof.is_greshof());
+
+    }
+
     SECTION("A angle is 0") {
       double theta_1 = 0.0;
 

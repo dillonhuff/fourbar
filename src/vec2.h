@@ -5,6 +5,11 @@
 
 namespace fourbar {
 
+  static inline bool within_eps(const double x, const double y, const double eps) {
+    double diff = fabs(x - y);
+    return diff < eps;
+  }
+
   static inline double to_degrees(const double rads) {
     return (rads*180) / M_PI;
   }
@@ -30,6 +35,11 @@ namespace fourbar {
 
     inline vec2 normalized() const {
       double len = length();
+
+      if (within_eps(len, 0.0, 1e-7)) {
+	return vec2(0.0, 0.0);
+      }
+
       return vec2(x() / len, y() / len);
     }
 
@@ -50,11 +60,6 @@ namespace fourbar {
 
   static inline vec2 operator*(const double s, const vec2 v) {
     return vec2(s*v.x(), s*v.y());
-  }
-
-  static inline bool within_eps(const double x, const double y, const double eps) {
-    double diff = fabs(x - y);
-    return diff < eps;
   }
 
   static inline bool within_eps(const vec2 l, const vec2 r, const double eps) {

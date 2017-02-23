@@ -54,7 +54,11 @@ namespace fourbar {
   std::vector<fourbar_linkage> random_linkages(const int num) {
     vector<fourbar_linkage> initial_links;
     for (int i = 0; i < num; i++) {
-      initial_links.push_back(random_linkage());
+      fourbar_linkage l = random_linkage();
+      while (!l.is_greshof()) {
+	l = random_linkage();
+      }
+      initial_links.push_back(l);
     }
     return initial_links;
   }

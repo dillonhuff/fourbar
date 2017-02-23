@@ -134,7 +134,7 @@ namespace fourbar {
     }
 
     inline bool ac_crank() const {
-      return non_degenerate() && is_greshof() && (ac_length() <= bd_length());
+      return non_degenerate() && is_greshof() && (ac_length() <= bd_length()) && (ac_length() <= cd_length()) && (ac_length() <= ab_length());
     }
 
     std::vector<vec2> crank_sample(const double inc) const;

@@ -19,6 +19,8 @@ namespace fourbar {
     stream << "B = " << q.b_pos() << std::endl;
     stream << "AC = " << q.ac_length() << std::endl;
     stream << "BD = " << q.bd_length() << std::endl;
+    stream << "AB = " << q.ab_length() << std::endl;
+    stream << "CD = " << q.cd_length() << std::endl;
     return stream;
   }
 

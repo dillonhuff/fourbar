@@ -270,10 +270,14 @@ namespace fourbar {
       fourbar_linkage mutated = mutate(links);
       fourbar_linkage crossed = crossover(current, mutated);
 
-      double crossed_fitness = evaluate_fitness(crossed, target_curve);
-      double current_fitness = evaluate_fitness(current, target_curve);
-      if (crossed_fitness >= current_fitness) {
-	next_generation.push_back(crossed);
+      if (crossed.ac_crank()) {
+	double crossed_fitness = evaluate_fitness(crossed, target_curve);
+	double current_fitness = evaluate_fitness(current, target_curve);
+	if (crossed_fitness >= current_fitness) {
+	  next_generation.push_back(crossed);
+	} else {
+	  next_generation.push_back(current);
+	}
       } else {
 	next_generation.push_back(current);
       }

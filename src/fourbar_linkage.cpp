@@ -15,10 +15,13 @@ namespace fourbar {
 
       if (isnan(a.x()) || isnan(a.y())) {
 	cout << "theta = " << theta << endl;
+	cout << "a     = " << a << endl;
 
 	cout << "Q is ac_crank ? " << q.ac_crank() << endl;
 	cout << "Quadrilateral" << endl;
-	cout << q << endl;
+	cout << q;
+	cout << "Angle = " << angle << endl;
+	cout << "Len   = " << len << endl;
 	
 	assert(!isnan(a.x()));
 	assert(!isnan(a.y()));

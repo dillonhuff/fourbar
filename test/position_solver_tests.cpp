@@ -2,6 +2,7 @@
 
 #include "catch.hpp"
 
+#include "fourbar_linkage.h"
 #include "quadrilateral.h"
 #include "vec2.h"
 #include "visual_debug.h"
@@ -9,6 +10,31 @@
 using namespace std;
 
 namespace fourbar {
+
+  TEST_CASE("Quadrilateral at 180 degrees") {
+    double theta = 180;
+
+    vec2 A(-40.1598, 33.5829);
+    vec2 B(24.4544, 97.3657);
+
+    double AC = 50.8335;
+    double BD = 117.582;
+    double CD = 98.1988;
+
+    quadrilateral q(A, B, AC, BD, CD);
+
+    double len = 9.73141;
+    double angle = 52.433;
+
+    fourbar_linkage linkage(q, len, angle);
+
+    vec2 pos = linkage.solve_A_angle(theta);
+
+    cout << "pos at 180 degrees = " << pos << endl;
+
+    REQUIRE(!isnan(pos.x()));
+    REQUIRE(!isnan(pos.y()));
+  }
 
   TEST_CASE("Solve square linkage") {
     vec2 a(0, 0);
@@ -22,6 +48,15 @@ namespace fourbar {
 
     SECTION("Mechanism is greshof") {
       REQUIRE(square_links.is_greshof());
+    }
+
+    SECTION("Position at 180 degrees") {
+      double theta_1 = 180.0;
+
+      vec2 d_position = square_links.solve_A_angle(theta_1);
+
+      REQUIRE(!isnan(d_position.x()));
+      REQUIRE(!isnan(d_position.y()));
     }
 
     SECTION("Mechanism is not greshof") {

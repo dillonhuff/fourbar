@@ -55,7 +55,7 @@ namespace fourbar {
 	psi_in_deg = -1*fabs(psi_in_deg);
       }
 
-      double psi = to_degrees(acos(psi_in_deg));      
+      double psi = to_degrees(acos(psi_in_deg));
       double alpha = to_degrees(acos(alpha_in_deg));
 
       //std::cout << "psi = " << psi << std::endl;

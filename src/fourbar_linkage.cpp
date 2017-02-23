@@ -11,7 +11,7 @@ namespace fourbar {
     double theta = 0.0;
     while (theta < 360.0) {
 
-      cout << "theta = " << theta << endl;
+      //cout << "theta = " << theta << endl;
       
       vec2 a = this->solve_A_angle(theta);
 

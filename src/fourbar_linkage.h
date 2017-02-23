@@ -17,7 +17,7 @@ namespace fourbar {
 
     vec2 solve_A_angle(const double theta_2) const {
       vec2 e = q.solve_A_angle(theta_2);
-      std::cout << "e = " << e << std::endl;
+      //std::cout << "e = " << e << std::endl;
       vec2 c_pos = q.c_pos(theta_2);
 
       vec2 k = e - c_pos;

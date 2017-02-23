@@ -297,7 +297,7 @@ namespace fourbar {
       assert(is_greshof(l));
     }
 
-    int max_generations = 2;
+    int max_generations = 80;
     int num_generations = 0;
     
     while (num_generations < max_generations) {

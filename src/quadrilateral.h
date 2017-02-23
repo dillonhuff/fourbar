@@ -7,6 +7,15 @@
 
 namespace fourbar {
 
+  template<typename T>
+  T clamp(const T v, const T l, const T h) {
+    if (l <= v && v <= h) {
+      return v;
+    }
+    if (v > h) { return h; }
+    return l;
+  }
+
   class quadrilateral {
   protected:
     vec2 a_pt, b_pt;
@@ -30,7 +39,7 @@ namespace fourbar {
       double theta_rads = (theta_2*M_PI) / 180.0;
       double cos_theta = cos(theta_rads);
 
-      std::cout << "cos theta_2 = " << cos_theta << std::endl;
+      //std::cout << "cos theta_2 = " << cos_theta << std::endl;
 
       double r7sq = r1*r1 + r2*r2 - 2*r1*r2*cos_theta;
 
@@ -45,24 +54,32 @@ namespace fourbar {
       double alpha_in_deg =
 	(r2*r2 - r7sq - r1*r1) / (2*r1*r7);
 
-      std::cout << "psi_in_deg = " << psi_in_deg << std::endl;
-      std::cout << "alpha_in_deg = " << alpha_in_deg << std::endl;
+      //std::cout << "psi_in_deg = " << psi_in_deg << std::endl;
+      //std::cout << "alpha_in_deg = " << alpha_in_deg << std::endl;
 
       if (within_eps(theta_2, 90.0, 90.0)) {
 	alpha_in_deg = fabs(alpha_in_deg);
 	psi_in_deg = fabs(psi_in_deg);
       } else {
-	alpha_in_deg = -1*fabs(alpha_in_deg);
-	psi_in_deg = -1*fabs(psi_in_deg);
+	if (ac_length() >= bd_length()) {
+	  alpha_in_deg = -1*fabs(alpha_in_deg);
+	  psi_in_deg = -1*fabs(psi_in_deg);
+	} else {
+	  alpha_in_deg = fabs(alpha_in_deg);
+	  psi_in_deg = -1*fabs(psi_in_deg);
+	}
       }
 
-      if (psi_in_deg > 1.0 && within_eps(psi_in_deg, 1.0, 10.0)) {
-	psi_in_deg = 0.99999;
-      }
+      psi_in_deg = clamp(psi_in_deg, -0.9999, 0.9999);
+      alpha_in_deg = clamp(alpha_in_deg, -0.9999, 0.9999);
 
-      if (alpha_in_deg > 1.0 && within_eps(alpha_in_deg, 1.0, 10.0)) {
-	alpha_in_deg = 0.99999;
-      }
+      // if (psi_in_deg > 1.0 && within_eps(psi_in_deg, 1.0, 10.0)) {
+      // 	psi_in_deg = 0.99999;
+      // }
+
+      // if (alpha_in_deg > 1.0 && within_eps(alpha_in_deg, 1.0, 10.0)) {
+      // 	alpha_in_deg = 0.99999;
+      // }
       
       double psi = to_degrees(acos(psi_in_deg));
       double alpha = to_degrees(acos(alpha_in_deg));
@@ -71,8 +88,8 @@ namespace fourbar {
 	alpha = 0.0;
       }
 
-      std::cout << "psi = " << psi << std::endl;
-      std::cout << "alpha = " << alpha << std::endl;
+      //std::cout << "psi = " << psi << std::endl;
+      //std::cout << "alpha = " << alpha << std::endl;
 
       assert(!isnan(psi));
       assert(!isnan(alpha));
@@ -89,7 +106,7 @@ namespace fourbar {
 
       double theta_4 = solve_theta_4(theta_2);
 
-      std::cout << "theta 4 = " << theta_4 << std::endl;
+      //std::cout << "theta 4 = " << theta_4 << std::endl;
 
       vec2 e = rotate_off_reference(b_pt, k, bd_len, theta_4);
 

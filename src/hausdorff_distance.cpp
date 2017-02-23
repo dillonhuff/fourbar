@@ -19,16 +19,16 @@ namespace fourbar {
       for (auto& pt_2 : curve_2) {
 	double d = euclidean_distance(pt_1, pt_2);
 
-	if (d > 1e25) {
-	  //cout <<  "distance between " << pt_1 << " and " << pt_2 << " is " << d << endl;
-	}
+	// if (d > min_dist) {
+	//   cout <<  "distance between " << pt_1 << " and " << pt_2 << " is " << d << " > " << min_dist << endl;
+	// }
 
 	if (d <= min_dist) {
 	  min_dist = d;
 	  min_set = true;
-	  //	  cout << "min dist set to = " << d << endl;
+	  cout << "min dist set to = " << d << endl;
 	} else {
-	  //cout <<  "Min dist not set: distance between " << pt_1 << " and " << pt_2 << " is " << d << endl;
+	  cout <<  "Min dist not set: distance between " << pt_1 << " and " << pt_2 << " is " << d << endl;
 	}
       }
 

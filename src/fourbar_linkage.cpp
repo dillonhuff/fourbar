@@ -1,5 +1,7 @@
 #include "fourbar_linkage.h"
 
+#include <cassert>
+
 using namespace std;
 
 namespace fourbar {
@@ -8,7 +10,12 @@ namespace fourbar {
     vector<vec2> pts;
     double theta = 0.0;
     while (theta < 360.0) {
-      pts.push_back(solve_A_angle(theta));
+      vec2 a = solve_A_angle(theta);
+
+      assert(!isnan(a.x()));
+      assert(!isnan(a.y()));
+
+      pts.push_back( a );
       theta += inc;
     }
     return pts;

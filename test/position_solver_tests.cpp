@@ -23,6 +23,10 @@ namespace fourbar {
 
     quadrilateral q(A, B, AC, BD, CD);
 
+    vec2 e = q.solve_A_angle(theta);
+
+    cout << "e for quadrilateral = " << e << endl;
+
     double len = 9.73141;
     double angle = 52.433;
 

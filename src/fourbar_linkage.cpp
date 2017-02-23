@@ -11,10 +11,11 @@ namespace fourbar {
     double theta = 0.0;
     while (theta < 360.0) {
 
+      cout << "theta = " << theta << endl;
+      
       vec2 a = solve_A_angle(theta);
 
       if (isnan(a.x()) || isnan(a.y())) {
-	cout << "theta = " << theta << endl;
 	cout << "a     = " << a << endl;
 
 	cout << "Q is ac_crank ? " << q.ac_crank() << endl;

@@ -72,7 +72,7 @@ namespace fourbar {
 
       double theta_4 = solve_theta_4(theta_2);
 
-      //std::cout << "theta 4 = " << theta_4 << std::endl;
+      std::cout << "theta 4 = " << theta_4 << std::endl;
 
       vec2 e = rotate_off_reference(b_pt, k, bd_len, theta_4);
 

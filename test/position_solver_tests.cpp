@@ -11,6 +11,22 @@ using namespace std;
 
 namespace fourbar {
 
+  TEST_CASE("Quadrilateral set and get") {
+    vec2 A(-40.1598, 33.5829);
+    vec2 B(24.4544, 97.3657);
+
+    double AC = 50.8335;
+    double BD = 117.582;
+    double CD = 98.1988;
+
+    quadrilateral q(A, B, AC, BD, CD);
+
+    REQUIRE(q.ac_length() == AC);
+    REQUIRE(q.bd_length() == BD);
+    REQUIRE(q.cd_length() == CD);
+    REQUIRE(q.ab_length() == (A - B).length());
+  }
+
   TEST_CASE("Quadrilateral at 180 degrees") {
     double theta = 180;
 

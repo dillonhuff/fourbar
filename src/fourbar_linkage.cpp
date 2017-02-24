@@ -34,4 +34,15 @@ namespace fourbar {
     return pts;
   }
 
+  void fourbar_linkage::print(std::ostream& stream) const {
+    stream << q << std::endl;
+    stream << "Angle  = " << angle << std::endl;
+    stream << "Length = " << len << std::endl;
+  }
+
+  std::ostream& operator<<(std::ostream& stream, const fourbar_linkage& l) {
+    l.print(stream);
+    return stream;
+  }
+
 }

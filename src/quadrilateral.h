@@ -54,8 +54,8 @@ namespace fourbar {
       double alpha_in_deg =
 	(r2*r2 - r7sq - r1*r1) / (-2*r1*r7);
 
-      std::cout << "psi_in_deg = " << psi_in_deg << std::endl;
-      std::cout << "alpha_in_deg = " << alpha_in_deg << std::endl;
+      // std::cout << "psi_in_deg = " << psi_in_deg << std::endl;
+      // std::cout << "alpha_in_deg = " << alpha_in_deg << std::endl;
 
       psi_in_deg = clamp(psi_in_deg, -0.9999, 0.9999);
       alpha_in_deg = clamp(alpha_in_deg, -0.9999, 0.9999);
@@ -84,29 +84,13 @@ namespace fourbar {
       	alpha = -1*fabs(alpha);
       	psi = -1*fabs(psi);
       }
-
-      //      if (within_eps(theta_2, 90.0, 90.0)) {
-	
-	
-	//      } else {
-
-      // 	if ((ac_length() < bd_length()) && (theta_2 < 270)) {
-      // 	  alpha = fabs(alpha);
-      // 	  psi = -1*fabs(psi);
-      // 	} else {
-      // 	  alpha = -1*fabs(alpha);
-      // 	  psi = -1*fabs(psi);
-      // 	}
-
-      // }
-
       
       if (within_eps(theta_2, 180.0, 1e-6)) {
 	alpha = 0.0;
       }
 
-      std::cout << "psi = " << psi << std::endl;
-      std::cout << "alpha = " << alpha << std::endl;
+      // std::cout << "psi = " << psi << std::endl;
+      // std::cout << "alpha = " << alpha << std::endl;
 
       assert(!isnan(psi));
       assert(!isnan(alpha));
@@ -123,7 +107,7 @@ namespace fourbar {
 
       double theta_4 = solve_theta_4(theta_2);
 
-      std::cout << "theta 4 = " << theta_4 << std::endl;
+      // std::cout << "theta 4 = " << theta_4 << std::endl;
 
       vec2 e = rotate_off_reference(b_pt, k, bd_len, theta_4);
 

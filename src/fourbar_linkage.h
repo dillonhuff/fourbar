@@ -38,10 +38,14 @@ namespace fourbar {
 
     inline bool ac_crank() const { return q.ac_crank(); }
 
+    void print(std::ostream& stream) const;
+
   };
 
   static inline bool is_greshof(const fourbar_linkage& l) {
     return l.is_greshof();
   }
+
+  std::ostream& operator<<(std::ostream& stream, const fourbar_linkage& l);
 
 }

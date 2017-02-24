@@ -197,8 +197,13 @@ namespace fourbar {
     quadrilateral short_crank(a, b, ac_len, bd_len, cd_len);
 
     SECTION("Mechanism is greshof")  {
-      REQUIRE(short_crank.is_greshof());
+      REQUIRE(short_crank.ac_crank());
     }
+
+    auto pts = short_crank.crank_sample(1);
+    auto pts_pd = polydata_for_points(pts);
+    color_polydata(pts_pd, 255, 0, 0);
+    visualize_polydatas({pts_pd});
 
   }
 

@@ -1,6 +1,7 @@
 #include <vtkActor.h>
 #include <vtkAxesActor.h>
 #include <vtkCellArray.h>
+#include <vtkCellData.h>
 #include <vtkPolyDataMapper.h>
 #include <vtkProperty.h>
 #include <vtkRenderWindowInteractor.h>
@@ -104,4 +105,26 @@ namespace fourbar {
     visualize_polydatas({pd});
   }
 
+  void color_polydata(vtkSmartPointer<vtkPolyData> data,
+		      const unsigned char red,
+		      const unsigned char green,
+		      const unsigned char blue) {
+    unsigned char color[3];
+    color[0] = red;
+    color[1] = green;
+    color[2] = blue;
+
+    // Create a vtkUnsignedCharArray container and store the colors in it
+    vtkSmartPointer<vtkUnsignedCharArray> colors =
+      vtkSmartPointer<vtkUnsignedCharArray>::New();
+    colors->SetNumberOfComponents(3);
+    for (vtkIdType i = 0; i < data->GetNumberOfCells(); i++) {
+      colors->InsertNextTupleValue(color);
+    }
+ 
+
+    data->GetCellData()->SetScalars(colors);
+
+  }
+  
 }

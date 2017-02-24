@@ -185,4 +185,21 @@ namespace fourbar {
 
   }
 
+  TEST_CASE("Crank shorter than rocker") {
+
+    vec2 a(1, 1);
+    vec2 b(3, -2);
+
+    double ac_len = 0.5;
+    double bd_len = 2.1;
+    double cd_len = 2.3;
+
+    quadrilateral short_crank(a, b, ac_len, bd_len, cd_len);
+
+    SECTION("Mechanism is greshof")  {
+      REQUIRE(short_crank.is_greshof());
+    }
+
+  }
+
 }

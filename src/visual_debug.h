@@ -15,4 +15,9 @@ namespace fourbar {
 
   polydata polydata_for_points(const std::vector<vec2>& pts);
 
+  void color_polydata(vtkSmartPointer<vtkPolyData> data,
+		      const unsigned char red,
+		      const unsigned char green,
+		      const unsigned char blue);
+  
 }

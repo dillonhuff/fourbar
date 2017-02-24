@@ -40,7 +40,6 @@ namespace fourbar {
     pd->SetPoints(points);
     pd->SetVerts(vertexes);
 
-    cout << "# of cells = " << pd->GetNumberOfPolys() << endl;
     return pd;
   }
 
@@ -86,16 +85,11 @@ namespace fourbar {
     std::vector<vtkSmartPointer<vtkActor> > actors;
 
     for (auto& pd : pds) {
-      cout << "# of polys in pd = " << pd->GetNumberOfPolys() << endl;
       auto pda = polydata_actor(pd);
       actors.push_back(pda);
     }
 
-    cout << "Starting viz" << endl;
-
     visualize_actors(actors);
-
-    cout << "Done with viz" << endl;
   }
 
   void visualize_points(const quadrilateral& q) {

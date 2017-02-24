@@ -44,7 +44,7 @@ namespace fourbar {
       double r7sq = r1*r1 + r2*r2 - 2*r1*r2*cos_theta;
 
       if (within_eps(r7sq, 0.0, 1e-6)) {
-	return 0.0;
+      	return 0.0;
       }
 
       double r7 = sqrt(r7sq);
@@ -56,19 +56,6 @@ namespace fourbar {
 
       //std::cout << "psi_in_deg = " << psi_in_deg << std::endl;
       //std::cout << "alpha_in_deg = " << alpha_in_deg << std::endl;
-
-      if (within_eps(theta_2, 90.0, 90.0)) {
-	alpha_in_deg = fabs(alpha_in_deg);
-	psi_in_deg = fabs(psi_in_deg);
-      } else {
-	if (ac_length() >= bd_length()) {
-	  alpha_in_deg = -1*fabs(alpha_in_deg);
-	  psi_in_deg = -1*fabs(psi_in_deg);
-	} else {
-	  alpha_in_deg = fabs(alpha_in_deg);
-	  psi_in_deg = -1*fabs(psi_in_deg);
-	}
-      }
 
       psi_in_deg = clamp(psi_in_deg, -0.9999, 0.9999);
       alpha_in_deg = clamp(alpha_in_deg, -0.9999, 0.9999);
@@ -84,6 +71,30 @@ namespace fourbar {
       double psi = to_degrees(acos(psi_in_deg));
       double alpha = to_degrees(acos(alpha_in_deg));
 
+      alpha = fabs(alpha);
+      psi = fabs(psi);
+
+      if (within_eps(theta_2, 90.0, 90.0)) {
+	alpha = -1*fabs(alpha);
+	psi = -1*fabs(psi);
+      }
+
+      //      if (within_eps(theta_2, 90.0, 90.0)) {
+	
+	
+	//      } else {
+
+      // 	if ((ac_length() < bd_length()) && (theta_2 < 270)) {
+      // 	  alpha = fabs(alpha);
+      // 	  psi = -1*fabs(psi);
+      // 	} else {
+      // 	  alpha = -1*fabs(alpha);
+      // 	  psi = -1*fabs(psi);
+      // 	}
+
+      // }
+
+      
       if (within_eps(theta_2, 180.0, 1e-6)) {
 	alpha = 0.0;
       }

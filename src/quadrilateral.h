@@ -100,9 +100,9 @@ namespace fourbar {
     vec2 solve_A_angle(const double theta_2) const {
       vec2 k = b_pt - a_pt;
 
-      if (within_eps(theta_2, 0.0, 1e-6)) {
-	return k + cd_len*k.normalized();
-      }
+      // if (within_eps(theta_2, 0.0, 1e-6)) {
+      // 	return k + cd_len*k.normalized();
+      // }
 
       double theta_4 = solve_theta_4(theta_2);
 

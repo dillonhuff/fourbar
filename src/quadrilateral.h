@@ -75,8 +75,8 @@ namespace fourbar {
       psi = fabs(psi);
 
       if (within_eps(theta_2, 90.0, 90.0)) {
-	alpha = -1*fabs(alpha);
-	psi = -1*fabs(psi);
+	alpha = fabs(alpha);
+	psi = fabs(psi);
       }
 
       //      if (within_eps(theta_2, 90.0, 90.0)) {

@@ -194,7 +194,11 @@ namespace fourbar {
     double bd_len = 2.1;
     double cd_len = 2.3;
 
-    quadrilateral short_crank(a, b, ac_len, bd_len, cd_len);
+    quadrilateral short_crank_q(a, b, ac_len, bd_len, cd_len);
+    double gamma = 0.0;
+    double len = 1.0;
+    fourbar_linkage short_crank(short_crank_q, len, gamma);
+    
 
     SECTION("Mechanism is greshof")  {
       REQUIRE(short_crank.ac_crank());
